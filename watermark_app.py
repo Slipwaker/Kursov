@@ -37,3 +37,12 @@ def load_watermark():
         global result_image
         result_image = watermarked_image
 
+
+  # Функция для сохранения результата
+def save_result():
+    if result_image is not None:
+        file_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png")])
+        if file_path:
+            result_image.save(file_path)
+
+ 
