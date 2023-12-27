@@ -38,11 +38,31 @@ def load_watermark():
         result_image = watermarked_image
 
 
-  # Функция для сохранения результата
+# Функция для сохранения результата
 def save_result():
     if result_image is not None:
         file_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png")])
         if file_path:
             result_image.save(file_path)
 
- 
+ # Создание графического интерфейса
+app = tk.Tk()
+app.title("Добавить водяной знак")
+app.geometry("600x400")
+
+load_image_button = tk.Button(app, text="Загрузить фотографию", command=load_image)
+load_image_button.pack()
+
+load_watermark_button = tk.Button(app, text="Загрузить водяной знак", command=load_watermark)
+load_watermark_button.pack()
+
+save_button = tk.Button(app, text="Сохранить результат", command=save_result)
+save_button.pack()
+
+image_label = tk.Label(app)
+image_label.pack()
+
+base_image = None
+result_image = None
+
+app.mainloop()
